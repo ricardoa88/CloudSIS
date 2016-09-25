@@ -1,3 +1,5 @@
+debugger;
+
 require(["esri/map",
     "dojo/on",
     "dojo/dom",
@@ -21,12 +23,15 @@ require(["esri/map",
       Map,on,dom,parser,FindTask, FindParameters, FeatureLayer, ArcGISDynamicMapServiceLayer, Query,
       Color, SimpleMarkerSymbol, domConstruct, InfoTemplate
   ) {
+        
 	  //declaro variables generales
     	var findTask, findParams, sUrlDemoService, lyrDemo, sUrlCamLayer, lyrCam, lyrRuta, tbDraw, sUrlRutaLayer ;
     	var map;
     	    	
     	parser.parse();
-		on(dojo.byId("progButtonNode"),"click",selectCam);
+    	on(dojo.byId("progButtonNode"), "click", selectCam);
+    	
+    	
 		//infoWindow = new InfoWindow({}, domConstruct.create("div", null, dom.byId("map")));
 
 		map = new Map("map", {
@@ -87,7 +92,11 @@ require(["esri/map",
 			queryCam.where = "Name = '" + nomcamara + "'";
 	        lyrCam.selectFeatures(queryCam, FeatureLayer.SELECTION_NEW);
 	        
-	    }		
+		}
+		function selectCam2() {
+		    alert("ddd");
+
+		}
 		
 
   });

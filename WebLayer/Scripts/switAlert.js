@@ -1201,13 +1201,13 @@
     /*
      * Use SweetAlert with RequireJS
      */
-
-    if (typeof define === 'function' && define.amd) {
-        define(function () {
-            return sweetAlert;
-        });
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = sweetAlert;
-    }
+    //debugger
+    //if (typeof define === 'function' && define.amd) {
+    //    define(function () {
+    //        return sweetAlert;
+    //    });
+    //} else if (typeof module !== 'undefined' && module.exports) {
+    //    module.exports = sweetAlert;
+    //}
 
 })(window, document);
