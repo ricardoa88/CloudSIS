@@ -104,17 +104,17 @@ namespace WebLayer.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult GetCitasDisponibles(int Esm, int Profesional, int Especialidad, string FechaInicial, string FechaFinal)
+        public ActionResult GetCitasDisponibles(int Esm, int Profesional, int Especialidad)
         {
             JsonResult result = new JsonResult();
             AccountBl bl = new AccountBl();
-            TransactionResult trans = bl.GetCitasDisponibles(new { Esm = Esm, Profesional= Profesional, Especialidad= Especialidad, FechaInicial= FechaInicial, FechaFinal= FechaFinal });
+            TransactionResult trans = bl.GetCitasDisponibles(new { Esm = Esm, Profesional = Profesional, Especialidad = Especialidad });
             return Json(trans, JsonRequestBehavior.AllowGet);
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult GetCitasDisponiblesAutorizadas(string Autorizacion)
+        public ActionResult GetCitasDisponiblesAutorizadas(int Autorizacion)
         {
             JsonResult result = new JsonResult();
             AccountBl bl = new AccountBl();
