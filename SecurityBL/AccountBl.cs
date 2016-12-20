@@ -46,7 +46,7 @@ namespace SecurityBL
             TransactionResult result = new TransactionResult();
             DataAccessObject ourDB = new DataAccessObject("DBModelsAWS");
             var a = ourDB.ExecuteReader(
-           @"SELECT m.nombres as medico, a.fecha ,  con.nombre as consultorio, e.nombre as esm, esp.nombres as especialidad  FROM agendamiento.citas c
+           @"SELECT c.id, m.nombres as medico, a.fecha ,  con.nombre as consultorio, e.nombre as esm, esp.nombres as especialidad  FROM agendamiento.citas c
                 inner join agendamiento.agenda a on c.idagenda=a.id
                 inner join agendamiento.medico m on a.idmedico=m.id
                 inner join agendamiento.afiliado afi on c.idafiliado=afi.id
