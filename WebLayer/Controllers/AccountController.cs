@@ -72,7 +72,7 @@ namespace WebLayer.Controllers
         {
             JsonResult result = new JsonResult();
             AccountBl bl = new AccountBl();
-            TransactionResult trans = bl.GetUserByName(new { Email = "ricardoa88@gmail.com" });
+            TransactionResult trans = bl.GetUserByName(new { Email = "devi.viviana@gmail.com" ,Clave="holamundo"});
 
             //ViewBag.ReturnUrl = returnUrl;
             //SecurityBL.AccountBl bl = new SecurityBL.AccountBl();
@@ -99,6 +99,37 @@ namespace WebLayer.Controllers
             JsonResult result = new JsonResult();
             AccountBl bl = new AccountBl();
             TransactionResult trans = bl.GetCitasAsignadas(new { Idafiliado = Idafiliado });
+            return Json(trans, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult GetCitasDisponibles(int Esm, int Profesional, int Especialidad)
+        {
+            JsonResult result = new JsonResult();
+            AccountBl bl = new AccountBl();
+            TransactionResult trans = bl.GetCitasDisponibles(new { Esm = Esm, Profesional = Profesional, Especialidad = Especialidad });
+            return Json(trans, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult GetCitasDisponiblesAutorizadas(int Autorizacion)
+        {
+            JsonResult result = new JsonResult();
+            AccountBl bl = new AccountBl();
+            TransactionResult trans = bl.GetCitasDisponiblesAutorizadas(new { Autorizacion = Autorizacion });
+            return Json(trans, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult GetDetalleCita(int Cita)
+        {
+            JsonResult result = new JsonResult();
+            AccountBl bl = new AccountBl();
+            TransactionResult trans = bl.GetDetalleCita(new { Cita = Cita });
+                        
             return Json(trans, JsonRequestBehavior.AllowGet);
         }
 
