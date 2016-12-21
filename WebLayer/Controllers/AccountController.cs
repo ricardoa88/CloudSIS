@@ -72,7 +72,7 @@ namespace WebLayer.Controllers
         {
             JsonResult result = new JsonResult();
             AccountBl bl = new AccountBl();
-            TransactionResult trans = bl.GetUserByName(new { Email = "ricardoa88@gmail.com" });
+            TransactionResult trans = bl.GetUserByName(new { Email = "devi.viviana@gmail.com" ,Clave="holamundo"});
 
             //ViewBag.ReturnUrl = returnUrl;
             //SecurityBL.AccountBl bl = new SecurityBL.AccountBl();
