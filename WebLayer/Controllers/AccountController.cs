@@ -82,13 +82,22 @@ namespace WebLayer.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult UserValidatePost(string Email,string Clave)
+        public ActionResult Autenticacion(string Email,string Clave)
         {
             JsonResult result = new JsonResult();
             AccountBl bl = new AccountBl();
             TransactionResult trans = bl.GetUserByName(new { Email = Email, Clave = Clave });
-
             
+            return Json(trans, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult GetDatosBasicos(int IdAfiliado)
+        {
+            JsonResult result = new JsonResult();
+            AccountBl bl = new AccountBl();
+            TransactionResult trans = bl.GetDatosBasicos(new { IdAfiliado = IdAfiliado });
             return Json(trans, JsonRequestBehavior.AllowGet);
         }
 
@@ -99,6 +108,16 @@ namespace WebLayer.Controllers
             JsonResult result = new JsonResult();
             AccountBl bl = new AccountBl();
             TransactionResult trans = bl.GetCitasAsignadas(new { Idafiliado = Idafiliado });
+            return Json(trans, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult GetHistoricoAgendas(int Idafiliado)
+        {
+            JsonResult result = new JsonResult();
+            AccountBl bl = new AccountBl();
+            TransactionResult trans = bl.GetHistoricoAgendas(new { Idafiliado = Idafiliado });
             return Json(trans, JsonRequestBehavior.AllowGet);
         }
 
@@ -130,6 +149,33 @@ namespace WebLayer.Controllers
             AccountBl bl = new AccountBl();
             TransactionResult trans = bl.GetDetalleCita(new { Cita = Cita });
                         
+            return Json(trans, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult ConfirmarCita(int Agenda, int IdAfiliado)
+        {
+            JsonResult result = new JsonResult();
+            AccountBl bl = new AccountBl();
+            TransactionResult trans = bl.ConfirmarCita(new { Agenda = Agenda, IdAfiliado = IdAfiliado });
+
+            TransactionResult transUpdate = bl.ActualizarAgenda(new { Agenda = Agenda });
+
+            return Json(trans, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult CancelarCita(int idCita, string motivo, string justificacion)
+        {
+            JsonResult result = new JsonResult();
+            AccountBl bl = new AccountBl();
+            TransactionResult trans = bl.CancelarCita(new { idCita = idCita, motivo = motivo, justificacion = justificacion });
+
+            TransactionResult transUpdate = bl.LiberarAgenda(new { idCita = idCita});
+
             return Json(trans, JsonRequestBehavior.AllowGet);
         }
 
